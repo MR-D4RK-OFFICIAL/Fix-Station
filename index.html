@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,12 +109,16 @@ section {
 }
 
 .service-card {
-  background: #1e293b;
-  padding: 2rem 1.5rem;
-  border-radius: 10px;
-  transition: 0.4s;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  color: #fff;
+  text-align: center;
   cursor: pointer;
-  border: 1px solid #334155;
+  transition: 0.4s;
 }
 
 .service-card:hover {
@@ -125,9 +128,73 @@ section {
 }
 
 .service-card h3 {
-  color: #fff;
+  font-size: 1.6rem;
   margin-bottom: 0.5rem;
-  font-size: 1.3rem;
+}
+
+.service-card p {
+  color: #d9d9d9;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+/* App Grid */
+.toggle-btn {
+  background: none;
+  border: none;
+  color: #00e0ff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.toggle-btn:hover {
+  color: #00b8d4;
+  transform: scale(1.1);
+}
+
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 15px;
+  justify-items: center;
+  margin-top: 15px;
+}
+
+.app-box {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  padding: 10px 5px;
+  width: 110px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  transition: 0.3s;
+}
+
+.app-box:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-4px);
+}
+
+.app-box img {
+  width: 35px;
+  height: 35px;
+  margin-bottom: 6px;
+  object-fit: contain;
+}
+
+.app-box span {
+  font-size: 0.85rem;
+  color: #fff;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
 }
 
 /* Team */
@@ -177,6 +244,133 @@ button:hover {
   background: #0284c7;
 }
 
+/* Chat Bot */
+#chatBot {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, #001f4d, #00aaff);
+  color: #fff;
+  font-size: 26px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+  z-index: 9999;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#chatBot:hover { 
+  transform: scale(1.1); 
+  box-shadow: 0 16px 32px rgba(0,0,0,0.45);
+}
+
+/* Fullscreen Popup */
+#chatPopup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #001f4d, #00aaff);
+  z-index: 9998;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Chat Header */
+#chatHeader {
+  width: 100%;
+  height: 60px;
+  background: #ffffff;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 1;
+}
+
+/* Back Button */
+#backBtn {
+  color: #001f4d;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(0,0,0,0.05);
+  transition: transform 0.2s, background 0.2s;
+}
+
+#backBtn:hover {
+  transform: scale(1.05);
+  background: rgba(0,0,0,0.1);
+}
+
+/* Iframe */
+#chatFrame {
+  width: 100%;
+  height: calc(100% - 60px);
+  border: none;
+  flex-grow: 1;
+}
+
+/* FAQ */
+.faq-container {
+  max-width: 700px;
+  margin: 50px auto;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  margin-bottom: 15px;
+  padding: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.faq-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.faq-question {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.faq-answer {
+  display: none;
+  margin-top: 10px;
+  color: #cfcfcf;
+  line-height: 1.6;
+  font-size: 1rem;
+  border-left: 3px solid #00ffcc;
+  padding-left: 12px;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Footer */
 footer {
   background: var(--primary);
@@ -208,12 +402,91 @@ footer {
   }
 }
 </style>
+
 </head>
 
 <body>
 
 <header>
   <div class="logo">Fix Station</div>
+  <!-- Theme Toggle -->
+<div class="theme-switch">
+  <span id="themeIcon">🌙</span>
+</div>
+
+<style>
+.theme-switch {
+  cursor: pointer;
+  font-size: 22px;
+  margin-right: 15px; /* মেন্যুর আগে থাকবে */
+  user-select: none;
+}
+
+/* Light/Dark Styles */
+body.dark-mode {
+  --primary: #1e293b;
+  --secondary: #0f172a;
+  --accent: #38bdf8;
+  --text: #e2e8f0;
+  --shadow: rgba(0,0,0,0.4);
+  background: var(--secondary);
+  color: var(--text);
+}
+
+body.light-mode {
+  --primary: #ffffff;
+  --secondary: #f5f5f5;
+  --accent: #1e40af;
+  --text: #111827;
+  --shadow: rgba(0,0,0,0.1);
+  background: var(--secondary);
+  color: var(--text);
+}
+
+/* Optional: adjust header, cards, footer colors in light-mode */
+body.light-mode header { background: var(--primary); color: var(--text); }
+body.light-mode .banner { background: linear-gradient(120deg,#fcd34d,#f97316); color: #111827; }
+body.light-mode .service-card, body.light-mode .team-card, body.light-mode .faq-item { background: rgba(255,255,255,0.7); color: #111827; backdrop-filter: none; }
+body.light-mode footer { background: var(--primary); color: #1e293b; }
+</style>
+
+<script>
+// Default Dark Mode
+if(!localStorage.getItem('theme')) {
+  document.body.classList.add('dark-mode');
+}
+
+const themeIcon = document.getElementById('themeIcon');
+
+function updateIcon() {
+  if(document.body.classList.contains('light-mode')) {
+    themeIcon.textContent = '🌙'; // Light -> show Moon
+  } else {
+    themeIcon.textContent = '☀️'; // Dark -> show Sun
+  }
+}
+
+// Initialize icon
+updateIcon();
+
+// Click to toggle
+document.querySelector('.theme-switch').addEventListener('click', () => {
+  document.body.classList.toggle('light-mode');
+  document.body.classList.toggle('dark-mode');
+  localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light-mode' : 'dark-mode');
+  updateIcon();
+});
+
+// Load saved theme
+if(localStorage.getItem('theme') === 'light-mode') {
+  document.body.classList.add('light-mode');
+  document.body.classList.remove('dark-mode');
+} else {
+  document.body.classList.add('dark-mode');
+  document.body.classList.remove('light-mode');
+}
+updateIcon();
+</script>
   <div class="hamburger" onclick="toggleMenu()">☰</div>
   <nav id="navLinks">
     <a href="#home" class="active">Home</a>
@@ -230,10 +503,32 @@ footer {
 </section>
 
 <section id="services">
-  <h2>Our Services</h2>
+  <h2 class="glassy-title">Our Services: </h2>
+
+<style>
+.glassy-title {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: rgba(0, 123, 255, 0.25); /* Blue tint with transparency */
+  backdrop-filter: blur(12px); /* Glassy blur effect */
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(0,123,255,0.4);
+  transition: transform 0.3s;
+}
+
+.glassy-title:hover {
+  transform: scale(1.05);
+}
+</style>
   <div class="service-container">
     <div class="service-card" onclick="openWhatsApp('Suspended Account / Page Recovery')">
-      <h3> Lock & suspended Account / Page Recovery</h3>
+      <h3>Lock & suspended Account / Page Recovery</h3>
       <p>Recover Lock & suspended account / Page safely and quickly.</p>
     </div>
     <div class="service-card" onclick="openWhatsApp('Disabled Account Restoration')">
@@ -260,11 +555,14 @@ footer {
       <h3>Facebook Auto Followers & Reactions</h3>
       <p>Our process is efficient, trustworthy, and designed to grow your profile seamlessly while maintaining authenticity.</p>
     </div>
-  </div>
 
-  <!-- Premium App Section Start -->
-  <style>
-  .service-card-apps {
+    <style>
+  body {
+    background: radial-gradient(circle at top left, #0a0a0a, #1a1a1a);
+    font-family: 'Titillium Web', sans-serif;
+  }
+
+  .service-card {
     background: rgba(255, 255, 255, 0.12);
     border-radius: 20px;
     padding: 20px;
@@ -275,160 +573,614 @@ footer {
     text-align: center;
     max-width: 950px;
     margin: 40px auto;
-    border: none;
   }
 
-  .service-card-apps h3 { font-size: 1.6rem; margin-bottom: 5px; }
-  .service-card-apps p { color: #d9d9d9; margin-bottom: 10px; font-size: 0.95rem; }
+  .service-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+  }
 
-  .toggle-btn { background: none; border: none; color: #00e0ff; font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
-  .toggle-btn:hover { color: #00b8d4; transform: scale(1.1); }
+  .service-card p {
+    color: #d9d9d9;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+  }
 
-  .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 15px; justify-items: center; margin-top: 15px; }
-  .app-box { background: rgba(255, 255, 255, 0.08); border-radius: 15px; padding: 10px 5px; width: 110px; height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25); transition: 0.3s; }
-  .app-box:hover { background: rgba(255, 255, 255, 0.22); transform: translateY(-4px); }
-  .app-box img { width: 35px; height: 35px; margin-bottom: 6px; object-fit: contain; }
-  .app-box span { font-size: 0.85rem; color: #fff; text-align: center; }
-  .hidden { display: none; }
-  </style>
+  .toggle-btn {
+    background: none;
+    border: none;
+    color: #00e0ff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
 
-  <div class="service-card-apps">
-    <h3>Premium App Subscriptions</h3>
-    <p>Get verified premium access for top applications — productivity, creativity, security & more.</p>
-    <button class="toggle-btn" onclick="toggleApps()">⬇ Show Apps</button>
-    <div id="appList" class="app-grid hidden">
-      <div class="app-box"><img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT"><span>ChatGPT Premium</span></div>
-      <div class="app-box"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube"><span>YouTube Premium</span></div>
-      <div class="app-box"><img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Freceived_849042987498685.jpeg?alt=media&token=9722aef8-2629-4d29-82c3-8395a019d7b4" alt="Canva"><span>Canva Pro</span></div>
-      <div class="app-box"><img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2FMessenger_creation_05EA94AC-C2E2-472B-8DF1-AC059F48795A.jpeg?alt=media&token=e1019b93-adef-4d7f-b305-b77b40537289" alt="CapCut"><span>CapCut Premium</span></div>
-      <div class="app-box"><img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2FMessenger_creation_BB747914-7144-4BAA-8A6E-CD24F9971DDF.jpeg?alt=media&token=de0e40a2-4f95-48d0-8a9a-0eb48d72f649" alt="Gemini"><span>Gemini AI</span></div>
-      <div class="app-box"><img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Freceived_1155409760085308.png?alt=media&token=e72905cb-ec56-4660-9e72-113d812d92da" alt="Notion"><span>Notion AI</span></div>
-      <div class="app-box"><img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Fchannels4_profile.jpg?alt=media&token=31310c34-3963-4b33-8931-daaabf0c85b0" alt="Figma"><span>Figma Pro</span></div>
-      <div class="app-box"><img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Fdownload.png?alt=media&token=19b8a276-4845-4728-84ac-0d583318423c" alt="NordVPN"><span>NordVPN</span></div>
-      <div class="app-box"><img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2F61cmCR3x78L_1.jpg?alt=media&token=354bffea-c15e-4c0f-92fd-4f828def3301" alt="IPVanish"><span>IPVanish VPN</span></div>
-      <div class="app-box"><img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Freceived_1604056130731899.jpeg?alt=media&token=9cda3e69-b43e-4b3f-b919-98142c729029" alt="Surfshark"><span>Surfshark VPN</span></div>
-      <div class="app-box"><img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2FScreenshot_20251106-224425.jpg?alt=media&token=7d19eb6b-70a9-44ba-a19f-a5d07f6e845b" alt="ExpressVPN"><span>ExpressVPN</span></div>
-      <div class="app-box"><img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2FMessenger_creation_126E6999-BF1C-4AC1-A4CD-D3A9592647EA.jpeg?alt=media&token=1f8fd8ad-2827-4ad4-a9a3-510baa9e8572" alt="HMA"><span>HMA VPN</span></div>
-      <div class="app-box"><img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Freceived_1911233729425491.jpeg?alt=media&token=3c403a31-72f4-4b47-a327-229027dbcd9a" alt="Microsoft Defender"><span>Microsoft Defender</span></div>
-      <div class="app-box"><img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Freceived_1076423627777079.jpeg?alt=media&token=81911302-7860-4a2c-bf5e-0117aa131c6d" alt="BitDefender"><span>BitDefender</span></div>
-      <div class="app-box"><img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Freceived_1182900483734684.png?alt=media&token=2a152ca3-be1c-424b-8131-31e888099eb8" alt="Kaspersky"><span>Kaspersky</span></div>
-      <div class="app-box"><img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Freceived_1361824425667308.jpeg?alt=media&token=305f333e-ce70-4039-8298-a7117bd05f96" alt="Avast"><span>Avast Premium</span></div>
+  .toggle-btn:hover {
+    color: #00b8d4;
+    transform: scale(1.1);
+  }
+
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 15px;
+    justify-items: center;
+    margin-top: 15px;
+  }
+
+  .app-box {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    padding: 10px 5px;
+    width: 110px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    transition: 0.3s;
+  }
+
+  .app-box:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-4px);
+  }
+
+  .app-box img {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 6px;
+    object-fit: contain;
+  }
+
+  .app-box span {
+    font-size: 0.85rem;
+    color: #fff;
+    text-align: center;
+  }
+
+  .hidden {
+    display: none;
+  }
+</style>
+
+<div class="service-card">
+  <h3>Premium App Subscriptions</h3>
+  <p>Get verified premium access for top applications — productivity, creativity, security & more.</p>
+  <button class="toggle-btn" onclick="toggleApps()">⬇ Show Apps</button>
+
+  <div id="appList" class="app-grid hidden">
+
+    <!-- Productivity & AI -->
+    <div class="app-box">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT">
+      <span>ChatGPT Premium</span>
     </div>
-  </div>
-  <!-- Premium App Section End -->
-</section>
 
+    <div class="app-box">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
+      <span>YouTube Premium</span>
+    </div>
+
+    <div class="app-box">
+      <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Freceived_849042987498685.jpeg?alt=media&token=9722aef8-2629-4d29-82c3-8395a019d7b4" alt="Canva">
+      <span>Canva Pro</span>
+    </div>
+
+    <div class="app-box">
+      <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2FMessenger_creation_05EA94AC-C2E2-472B-8DF1-AC059F48795A.jpeg?alt=media&token=e1019b93-adef-4d7f-b305-b77b40537289" alt="CapCut">
+      <span>CapCut Premium</span>
+    </div>
+
+    <div class="app-box">
+      <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2FMessenger_creation_BB747914-7144-4BAA-8A6E-CD24F9971DDF.jpeg?alt=media&token=de0e40a2-4f95-48d0-8a9a-0eb48d72f649" alt="Gemini">
+      <span>Gemini AI</span>
+    </div>
+
+    <div class="app-box">
+      <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Freceived_1155409760085308.png?alt=media&token=e72905cb-ec56-4660-9e72-113d812d92da" alt="Notion">
+      <span>Notion AI</span>
+    </div>
+
+    <div class="app-box">
+      <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Fchannels4_profile.jpg?alt=media&token=31310c34-3963-4b33-8931-daaabf0c85b0" alt="Figma">
+      <span>Figma Pro</span>
+    </div>
+
+    <!-- VPN Section -->
+    <div class="app-box">
+      <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Fdownload.png?alt=media&token=19b8a276-4845-4728-84ac-0d583318423c" alt="NordVPN">
+      <span>NordVPN</span>
+    </div>
+
+    <div class="app-box">
+      <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2F61cmCR3x78L_1.jpg?alt=media&token=354bffea-c15e-4c0f-92fd-4f828def3301" alt="IPVanish">
+      <span>IPVanish VPN</span>
+    </div>
+
+    <div class="app-box">
+      <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Freceived_1604056130731899.jpeg?alt=media&token=9cda3e69-b43e-4b3f-b919-98142c729029" alt="Surfshark">
+      <span>Surfshark VPN</span>
+    </div>
+
+    <div class="app-box">
+      <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2FScreenshot_20251106-224425.jpg?alt=media&token=7d19eb6b-70a9-44ba-a19f-a5d07f6e845b" alt="ExpressVPN">
+      <span>ExpressVPN</span>
+    </div>
+
+    <div class="app-box">
+      <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2FMessenger_creation_126E6999-BF1C-4AC1-A4CD-D3A9592647EA.jpeg?alt=media&token=1f8fd8ad-2827-4ad4-a9a3-510baa9e8572" alt="HMA">
+      <span>HMA VPN</span>
+    </div>
+
+    <!-- Antivirus -->
+    <div class="app-box">
+      <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Freceived_1911233729425491.jpeg?alt=media&token=3c403a31-72f4-4b47-a327-229027dbcd9a" alt="Microsoft Defender">
+      <span>Microsoft Defender</span>
+    </div>
+
+    <div class="app-box">
+      <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Freceived_1076423627777079.jpeg?alt=media&token=81911302-7860-4a2c-bf5e-0117aa131c6d" alt="BitDefender">
+      <span>BitDefender</span>
+    </div>
+
+    <div class="app-box">
+      <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Freceived_1182900483734684.png?alt=media&token=2a152ca3-be1c-424b-8131-31e888099eb8" alt="Kaspersky">
+      <span>Kaspersky</span>
+    </div>
+
+    <div class="app-box">
+      <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Freceived_1361824425667308.jpeg?alt=media&token=305f333e-ce70-4039-8298-a7117bd05f96" alt="Avast">
+      <span>Avast Premium</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function toggleApps() {
+    const appList = document.getElementById('appList');
+    const btn = document.querySelector('.toggle-btn');
+    if (appList.classList.contains('hidden')) {
+      appList.classList.remove('hidden');
+      btn.textContent = '⬆ Hide Apps';
+    } else {
+      appList.classList.add('hidden');
+      btn.textContent = '⬇ Show Apps';
+    }
+  }
+</script>
+  </div>
+</section>
 <section id="about">
-  <h2>About Us</h2>
+<h2 class="glassy-title">About Us</h2>
+
+<style>
+.glassy-title {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: rgba(0, 123, 255, 0.25); /* Blue tint with transparency */
+  backdrop-filter: blur(12px); /* Glassy blur effect */
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(0,123,255,0.4);
+  transition: transform 0.3s;
+}
+
+.glassy-title:hover {
+  transform: scale(1.05);
+}
+</style>
   <p>We are a professional Cyber Support & Digital Security Team dedicated to safeguarding your online presence. Our team specializes in social media account recovery, cybersecurity consulting, and IT troubleshooting — ensuring that your data, reputation, and digital assets remain secure.With a combination of advanced technical expertise, ethical practices, and real-time response systems, we deliver fast, reliable, and transparent solutions for both individuals and businesses across the globe.Our mission is simple yet powerful — to protect digital identities, restore compromised accounts, and enhance cybersecurity awareness in an increasingly connected world. We believe in trust, confidentiality, and professionalism, making sure every client receives personalized support with the highest level of security.</p>
 </section>
 
 <section id="team">
-  <h2>Our Team</h2>
+  <h2 class="glassy-title">Our Team</h2>
+
+<style>
+.glassy-title {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: rgba(0, 123, 255, 0.25); /* Blue tint with transparency */
+  backdrop-filter: blur(12px); /* Glassy blur effect */
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(0,123,255,0.4);
+  transition: transform 0.3s;
+}
+
+.glassy-title:hover {
+  transform: scale(1.05);
+}
+</style>
   <div class="team-container">
-    <div class="team-card"><img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2F20251107_003614.jpg?alt=media&token=6d5fc8db-6481-47df-a813-6970a18d8a6e" alt="Rifat Mahmud"><h4>Rifat Mahmud</h4><p>Founder of Fix Station</p></div>
-    <div class="team-card"><img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2F20251107_003418.jpg?alt=media&token=6bb51080-f301-4327-91fd-902b0ee7919b" alt="Fardin Ahmad"><h4>Fardin Ahmad</h4><p>Social Media Recovery Specialist</p></div>
-    <div class="team-card"><img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2F20251107_003537.jpg?alt=media&token=73033a1f-abe9-47af-9b82-b52ba23d9391" alt="Ahmed Fahim"><h4>Ahmed Fahim</h4><p>Programmer & Web Expert</p></div>
-    <div class="team-card"><img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2F20251107_003446.jpg?alt=media&token=6c07fbe1-b519-4630-94af-1920ef2635f9" alt="Mahmudul Hasan"><h4>Mahmudul Hasan</h4><p>Digital Service Manager</p></div>
+    <div class="team-card">
+      <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2F20251107_003614.jpg?alt=media&token=6d5fc8db-6481-47df-a813-6970a18d8a6e" alt="Rifat Mahmud">
+      <h4>Rifat Mahmud</h4>
+      <p>Founder of Fix Station</p>
+    </div>
+    <div class="team-card">
+      <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2F20251107_003418.jpg?alt=media&token=6bb51080-f301-4327-91fd-902b0ee7919b" alt="Fardin Ahmad">
+      <h4>Fardin Ahmad</h4>
+      <p>Social Media Recovery Specialist</p>
+    </div>
+    <div class="team-card">
+      <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2F20251107_003537.jpg?alt=media&token=73033a1f-abe9-47af-9b82-b52ba23d9391" alt="Ahmed Fahim">
+      <h4>Ahmed Fahim</h4>
+      <p>Programmer & Web Expert</p>
+    </div>
+    <div class="team-card">
+      <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2F20251107_003446.jpg?alt=media&token=6c07fbe1-b519-4630-94af-1920ef2635f9" alt="Mahmudul Hasan">
+      <h4>Mahmudul Hasan</h4>
+      <p>Digital Service Manager</p>
+    </div>
+  </div>
+</section>
+<!-- FAQ Section -->
+<section id="faq" class="faq-container">
+  <h2 class="glassy-title">Our Services</h2>
+
+<style>
+.glassy-title {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: rgba(0, 123, 255, 0.25); /* Blue tint with transparency */
+  backdrop-filter: blur(12px); /* Glassy blur effect */
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(0,123,255,0.4);
+  transition: transform 0.3s;
+}
+
+.glassy-title:hover {
+  transform: scale(1.05);
+}
+</style>
+<div class="faq-container">
+  <div class="faq-item">
+    <div class="faq-question">Have you worked on these types of projects before?</div>
+    <div class="faq-answer" data-answer="Yes, we have successfully provided services to over 2,000 clients across Bangladesh and around the world."></div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question">Is your service limited to Bangladesh only?</div>
+    <div class="faq-answer" data-answer="No, our services are available globally. We currently work with clients from multiple countries beyond Bangladesh."></div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">How long does account recovery take?</div>
+    <div class="faq-answer" data-answer="The recovery time depends on the type of account and the issue. Typically, it ranges from a few hours to 3 business days."></div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Do I need to pay before the work starts?</div>
+    <div class="faq-answer" data-answer="Not the full amount. You’ll need to pay 30% upfront to begin the work. If any additional costs arise, another 30% may be required mid-project, and the remaining 40% after the job is fully completed."></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">Are my payments secure?</div>
+    <div class="faq-answer" data-answer="Absolutely. All payments are processed through trusted and encrypted gateways to ensure complete security."></div>
+  </div>
+</section>
+<section id="testimonials">
+  <h2 class="glassy-title">Testimonials</h2>
+
+  <button class="toggle-btn" onclick="toggleTestimonials()">⬇ Show Testimonials</button>
+
+  <div id="testimonialList" class="hidden">
+    <div class="testimonial-card">
+      <p>“Fix Station recovered my hacked account within hours! Highly recommended.”</p>
+      <h4>- Shoyaib Hasan</h4>
+    </div>
+    <div class="testimonial-card">
+      <p>“Excellent service! Fast, reliable, and secure.”</p>
+      <h4>- Fahmid Ahmed</h4>
+    </div>
+    <div class="testimonial-card">
+      <p>“The team helped me restore my business page with no hassle.”</p>
+      <h4>- Nurul Islam</h4>
+    </div>
   </div>
 </section>
 
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p>Need help? Message us directly through WhatsApp or use our chatbot below.</p>
-  <button onclick="openWhatsApp('General Inquiry')">💬 Message on WhatsApp</button>
-</section>
-
-<!-- Your Custom Chat System (Now Fixed) -->
 <style>
-  #chatBot { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, #001f4d, #00aaff); color: #fff; font-size: 26px; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; box-shadow: 0 12px 24px rgba(0,0,0,0.35); z-index: 9999; transition: transform 0.3s, box-shadow 0.3s; }
-  #chatBot:hover { transform: scale(1.1); box-shadow: 0 16px 32px rgba(0,0,0,0.45); }
-  #chatPopup { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #001f4d; z-index: 9998; flex-direction: column; overflow: hidden; }
-  #chatHeader { width: 100%; height: 60px; background: #ffffff; display: flex; justify-content: flex-end; align-items: center; padding: 0 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); position: relative; z-index: 1; }
-  #backBtn { color: #001f4d; font-size: 16px; font-weight: 600; cursor: pointer; padding: 6px 12px; border-radius: 20px; background: rgba(0,0,0,0.05); transition: transform 0.2s, background 0.2s; }
-  #backBtn:hover { transform: scale(1.05); background: rgba(0,0,0,0.1); }
-  #chatFrame { width: 100%; height: calc(100% - 60px); border: none; flex-grow: 1; }
+/* Testimonials Glassy Card */
+#testimonials {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+#testimonialList {
+  margin-top: 1.5rem;
+}
+
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  margin: 15px auto;
+  border-radius: 15px;
+  max-width: 600px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  color: #fff;
+  transition: transform 0.3s;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+.testimonial-card h4 {
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #38bdf8;
+}
+
+/* Hidden class */
+.hidden { display: none; }
+
+/* Toggle button */
+.toggle-btn {
+  background: none;
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.toggle-btn:hover {
+  background: rgba(56,189,248,0.2);
+}
 </style>
 
-<div id="chatBot">
-  <img src="https://firebasestorage.googleapis.com/v0/b/loan-info-bl-sim.appspot.com/o/Fix%20station%2Freceived_1155409760085308.png?alt=media&token=e72905cb-ec56-4660-9e72-113d812d92da" alt="Chat Logo" style="width:50px; height:50px; cursor:pointer;">
+<script>
+function toggleTestimonials() {
+  const list = document.getElementById('testimonialList');
+  const btn = document.querySelector('#testimonials .toggle-btn');
+  if(list.classList.contains('hidden')){
+    list.classList.remove('hidden');
+    btn.textContent = '⬆ Hide Testimonials';
+  } else {
+    list.classList.add('hidden');
+    btn.textContent = '⬇ Show Testimonials';
+  }
+}
+</script>
+<section id="contact">
+<h2 class="glassy-title">Contact Us</h2>
+
+<style>
+.glassy-title {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: rgba(0, 123, 255, 0.25); /* Blue tint with transparency */
+  backdrop-filter: blur(12px); /* Glassy blur effect */
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(0,123,255,0.4);
+  transition: transform 0.3s;
+}
+
+.glassy-title:hover {
+  transform: scale(1.05);
+}
+</style>
+  <p>Need help? Message us directly through WhatsApp or use our chatbot below.</p>
+ 
+  <button onclick="openWhatsApp('General Inquiry')"> Message on WhatsApp</button>
+</section>
+<!-- Social Platforms Section -->
+<div class="social-container">
+  <a href="https://www.facebook.com/profile.php?id=61578373169466" target="_blank" class="social-box">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+  </a>
+  <a href="https://t.me/fix_station_it" target="_blank" class="social-box">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+  </a>
+  <a href="https://whatsapp.com/channel/0029Vb6m81e8vd1HHUeUwW3Y" target="_blank" class="social-box">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
 </div>
 
+<style>
+/* Container */
+.social-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 0;
+}
+
+/* Glassy Boxes */
+.social-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.social-box:hover {
+  transform: scale(1.2);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Icon */
+.social-box img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+</style>
+<!-- Footer -->
+<footer>
+  &copy;  2025 Fix Station. All rights reserved.
+</footer>
+<!-- Footer Links -->
+<div style="display:flex; justify-content:center; gap:20px; margin-top:20px; font-family:'Titillium Web', sans-serif;">
+  <div class="footer-link" onclick="toggleFooterSection('privacySection')">Privacy</div>
+  <div class="footer-link" onclick="toggleFooterSection('termsSection')">Terms</div>
+  <div class="footer-link" onclick="toggleFooterSection('cookiesSection')">Cookies</div>
+</div>
+
+<!-- Hidden Sections -->
+<div id="privacySection" class="hidden-footer-section">
+  <h4>Privacy Policy</h4>
+  <p>Your privacy is important to us. We collect minimal data necessary to provide services, never share your personal info with third parties without consent, and comply with global data protection regulations.</p>
+</div>
+
+<div id="termsSection" class="hidden-footer-section">
+  <h4>Terms of Service</h4>
+  <p>By using Fix Station, you agree to our terms. Services are provided as-is, user is responsible for their accounts, and any disputes will be handled under applicable laws.</p>
+</div>
+
+<div id="cookiesSection" class="hidden-footer-section">
+  <h4>Cookies Policy</h4>
+  <p>We use cookies to improve user experience, analyze site traffic, and provide personalized content. You can control cookie settings through your browser.</p>
+</div>
+
+<style>
+.footer-link {
+  color: #38bdf8;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.footer-link:hover {
+  color: #0ea5e9;
+}
+
+.hidden-footer-section {
+  display: none;
+  max-width: 800px;
+  margin: 10px auto;
+  padding: 15px 20px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  color: #fff;
+  font-size: 0.95rem;
+  text-align: left;
+}
+</style>
+<style>
+:root {
+  --accent: linear-gradient(90deg, #22c55e, #16a34a); /* সবুজ গ্রেডিয়েন্ট */
+}
+
+/* সব জায়গায় যেখানে var(--accent) ব্যবহার আছে, সেটা গ্রেডিয়েন্ট হিসেবে দেখাবে */
+.accent-gradient {
+  background: var(--accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* বাটন/হাইলাইটের জন্য */
+button, .service-card:hover, .team-card:hover, nav a:hover, nav a.active {
+  background: var(--accent);
+  color: white;
+  border: none;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+</style>
+
+<script>
+function toggleFooterSection(id){
+  const section = document.getElementById(id);
+  if(section.style.display === 'block'){
+    section.style.display = 'none';
+  } else {
+    // hide all first
+    document.querySelectorAll('.hidden-footer-section').forEach(s => s.style.display='none');
+    section.style.display = 'block';
+  }
+}
+</script>
+<!-- Chat Bot -->
+<div id="chatBot">💬</div>
 <div id="chatPopup">
   <div id="chatHeader">
-    <div id="backBtn">Back</div>
+    <div id="backBtn" onclick="chatPopupClose()">Back</div>
   </div>
-  <!-- CORRECT IFRAME LINK IS USED HERE -->
   <iframe id="chatFrame" src="https://chatbase.co/08bZqdme7lo4HS_EbMoA9/help"></iframe>
 </div>
-<!-- Your Custom Chat System End -->
 
-<!-- ===== FAQ Section Start ===== -->
-<style>
-.faq-container { max-width: 700px; margin: 50px auto; font-family: 'Titillium Web', sans-serif; }
-.faq-item { background: rgba(255, 255, 255, 0.08); border-radius: 15px; margin-bottom: 15px; padding: 20px; backdrop-filter: blur(12px); box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: all 0.3s ease; cursor: pointer; }
-.faq-item:hover { background: rgba(255, 255, 255, 0.15); }
-.faq-question { font-weight: 600; font-size: 1.2rem; color: #fff; letter-spacing: 0.5px; }
-.faq-answer { display: none; margin-top: 10px; color: #cfcfcf; line-height: 1.6; font-size: 1rem; border-left: 3px solid #00ffcc; padding-left: 12px; font-family: 'Titillium Web', sans-serif; }
-.faq-item.active .faq-answer { display: block; animation: fadeIn 0.5s ease-in-out; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
-</style>
-
-<div class="faq-container">
-  <div class="faq-item"><div class="faq-question">Have you worked on these types of projects before?</div><div class="faq-answer" data-answer="Yes, we have successfully provided services to over 2,000 clients across Bangladesh and around the world."></div></div>
-  <div class="faq-item"><div class="faq-question">Do you neglect or delay your work?</div><div class="faq-answer" data-answer="No, absolutely not. We treat every task as our own and complete it with the highest level of care and dedication."></div></div>
-  <div class="faq-item"><div class="faq-question">Do I need to pay before the work starts?</div><div class="faq-answer" data-answer="Not the full amount. You’ll need to pay 30% upfront to begin the work. If any additional costs arise, another 30% may be required mid-project, and the remaining 40% after the job is fully completed."></div></div>
-  <div class="faq-item"><div class="faq-question">Is your service limited to Bangladesh only?</div><div class="faq-answer" data-answer="No, our services are available globally. We currently work with clients from multiple countries beyond Bangladesh."></div></div>
-</div>
-<!-- ===== FAQ Section End ===== -->
-
-<footer>
-  &copy; 2025 Fix Station | All Rights Reserved.
-</footer>
-
-<!-- Consolidated and Corrected Scripts -->
 <script>
-// Toggle Hamburger Menu
+// Navigation toggle
 function toggleMenu(){
   document.getElementById('navLinks').classList.toggle('show');
 }
 
-// Open WhatsApp
+// WhatsApp Open
 function openWhatsApp(service){
   const msg = encodeURIComponent(`Hello Fix Station! I need help with: ${service}`);
   const url = `https://wa.me/+966541368607?text=${msg}`;
   window.open(url, '_blank');
 }
 
-// Toggle Premium Apps List
-function toggleApps() {
-  const appList = document.getElementById('appList');
-  const btn = document.querySelector('.toggle-btn');
-  if (appList.classList.contains('hidden')) {
-    appList.classList.remove('hidden');
-    btn.textContent = '⬆ Hide Apps';
-  } else {
-    appList.classList.add('hidden');
-    btn.textContent = '⬇ Show Apps';
-  }
+// Apps toggle
+function toggleApps(){
+  const appList = document.getElementById("appList");
+  appList.classList.toggle("hidden");
 }
 
-// Your Custom Chat Popup Logic
-const chatBtn = document.getElementById("chatBot");
+// Chat Bot
+const chatBot = document.getElementById("chatBot");
 const chatPopup = document.getElementById("chatPopup");
-const backBtn = document.getElementById("backBtn");
 
-chatBtn.addEventListener("click", () => {
-  chatPopup.style.display = "flex";
-  chatBtn.style.display = "none";
+chatBot.addEventListener("click", ()=>{
+  chatPopup.style.display = chatPopup.style.display === "flex" ? "none" : "flex";
 });
 
-backBtn.addEventListener("click", () => {
+function chatPopupClose(){
   chatPopup.style.display = "none";
-  chatBtn.style.display = "flex";
-});
+}
 
-// FAQ Accordion with Typewriter
+// FAQ Typewriter & toggle
+function typeWriter(element, text, speed = 20) {
+  element.innerHTML = '';
+  let i = 0;
+  const typing = setInterval(() => {
+    element.innerHTML += text.charAt(i);
+    i++;
+    if (i === text.length) clearInterval(typing);
+  }, speed);
+}
+
 document.querySelectorAll('.faq-item').forEach(item => {
   item.addEventListener('click', () => {
     const answerBox = item.querySelector('.faq-answer');
@@ -446,20 +1198,6 @@ document.querySelectorAll('.faq-item').forEach(item => {
     }
   });
 });
-
-// Typewriter effect function
-function typeWriter(element, text, speed = 20) {
-  if (element && text) {
-    element.innerHTML = '';
-    let i = 0;
-    const typing = setInterval(() => {
-      element.innerHTML += text.charAt(i);
-      i++;
-      if (i === text.length) clearInterval(typing);
-    }, speed);
-  }
-}
 </script>
-
 </body>
 </html>
